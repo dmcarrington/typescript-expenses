@@ -16,3 +16,13 @@ services:
      - 8080:8080
     depends_on:
      - mongo-expenses
+  
+  typescript-expenses-ui:
+    container_name: typescript-expenses-ui
+    build: ./client/typescript-expenses-ui
+    env_file:
+     - ./client/typescript-expenses-ui/.env
+    ports:
+     - 3000:3000
+    depends_on:
+      - typescript-expenses

@@ -1,0 +1,128 @@
+{
+	"info": {
+		"_postman_id": "c2415b04-2a27-4c4e-863f-cdde0f9de127",
+		"name": "TypescriptExpenses",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22938031"
+	},
+	"item": [
+		{
+			"name": "Add Expense Report",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"test2\",\n    \"amount\": 12.35\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/david/add_expense",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"david",
+						"add_expense"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "http://127.0.0.1:8080/user/david/add_expense",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"description\": \"test2\",\n    \"amount\": 12.35\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/david/add_expense",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"david",
+								"add_expense"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "origin, X-Requested-With,Content-Type,Accept, Authorization"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "160"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a0-depSSje/1VVlXTrYbojjPPomNtM\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 10 Nov 2023 13:59:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"response\": {\n        \"originatorName\": \"david\",\n        \"description\": \"test2\",\n        \"amount\": 12.35,\n        \"dateSubmitted\": \"2023-11-10T13:59:58.756Z\",\n        \"_id\": \"654e375e9aa338cd61af4eb6\",\n        \"__v\": 0\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get User's Expenses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/user/david/expenses",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"david",
+						"expenses"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -53,7 +53,6 @@ interface IExpenseReport {
   
 async function loadReports(username: string) {
     const response = await axios.get<IExpenseReport[]>("user/" + username + "/expenses");
-    console.log(response)
     return response;
 }
 
@@ -63,9 +62,7 @@ const UserDashboard = (props: IProps) => {
     
     useEffect(() => {
         loadReports(props.user).then(list => {
-            console.log(list)
             setExpenseList(list.data)
-            console.log(expenseList)
         })
     }, [added])
 

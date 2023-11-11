@@ -12,14 +12,16 @@ import Dialog from '@mui/material/Dialog';
 
 axios.defaults.baseURL = process.env.REACT_APP_SERVER_BASE_URL;
 
-export interface NewExpenseDialogProps {
+// Properties passef from the dashboard to new expense dialog
+export interface INewExpenseDialogProps {
     open: boolean;
     onCancel: () => void;
     onSave: (username: string, description: string, amount: Number) => void;
     username: string
   }
 
-function NewExpenseDialog(props: NewExpenseDialogProps) {
+// pop up dialog from dashboard page containing a form for the user to create a new expense report
+function NewExpenseDialog(props: INewExpenseDialogProps) {
     const { onCancel, onSave, open, username } = props;
   
     const handleClose = () => {
@@ -39,23 +41,27 @@ function NewExpenseDialog(props: NewExpenseDialogProps) {
     );
   }
 
+  // Interface definition for props passed from 'login' page
 interface IProps {
     user: string;
     setUser: Dispatch<SetStateAction<string>>;
 }
 
+// Interface definition for expense report Mongo schema
 interface IExpenseReport {
     originatorName: string,
     description: string,
     amount: number,
     dateSubmitted: Date
 }
-  
+
+// makes API call to server to get expense reports for given user
 async function loadReports(username: string) {
     const response = await axios.get<IExpenseReport[]>("user/" + username + "/expenses");
     return response;
 }
 
+// User dashboard page, containing a list of existing expense reports, buttons to create new report and logout
 const UserDashboard = (props: IProps) => {
     const [expenseList, setExpenseList] = useState<IExpenseReport[]>();
     const [added, setAdded] = useState(0);

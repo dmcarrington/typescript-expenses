@@ -5,6 +5,8 @@ This application is a simple expense report example application built using type
 3. React front end
 
 ## Building and running the application ##
+Dependencies: `Docker, docker-compose`
+
 The application is intended to be run as a set of Docker containers. All necessary files have been included. First, it will be necessary to set up the environment variable files for the API server and UI containers. I have provided example .env files for both, which will work for demo purposes:
 ```
 cp .env.example .env
@@ -28,7 +30,9 @@ The UI makes use of two API endpoints on the server container, which can be invo
 All records are stored in the MongoDB started as a Docker container along with the other services. The database is initialised whrn the API server first start, so no initialisation scripts are required.
 
 ## Notes and known issues ##
-* As per instructions, no authentication has been applied, either to the user login, APIs, or database access.
+* As per instructions, no authentication has been applied, either to the user login, APIs, or database access. The 'login' page serves only as a method of getting a username.
+* Username id simply passed via `props` to the rest of the application. With the introduction of real authentication, this would likely be replaced by `AuthContext`.
 * No exception handling on API calls and responses.
 * UI is minimal but functional.
 * Minimal validation of fields - I have made the `amount` field be a number, but no restriction on decimal places. All other fields are unvalidated
+* No automated tests
